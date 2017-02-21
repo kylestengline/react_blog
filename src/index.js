@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { Router, browserHistory } from 'react-router';
-//browserHistory tells react router how to interpret changes to the url.
 import reducers from './reducers';
 import routes from './routes';
 
