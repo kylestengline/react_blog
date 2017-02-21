@@ -5,11 +5,12 @@ import { createStore, applyMiddleware } from 'redux';
 import { Router, browserHistory } from 'react-router';
 //browserHistory tells react router how to interpret changes to the url.
 import reducers from './reducers';
+import routes from './routes';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <Router history={browserHistroy} />
+    <Router history={browserHistory} routes={routes} />
   </Provider>
   , document.querySelector('.container'));
