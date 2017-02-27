@@ -24,22 +24,57 @@ class PostsNew extends Component {
           <div className="form-group">
             <label>Title</label>
             <input type="text" className="form-control" {...title} />
+            <div className="text-help">
+              {title.touched ? title.error : ''}
+            </div>
           </div>
 
           <div className="form-group">
             <label>Categories</label>
             <input type="text" className="form-control" {...categories} />
+            <div className="text-help">
+              {categories.touched ? categories.error : ''}
+            </div>
           </div>
 
           <div className="form-group">
             <label>Content</label>
             <textarea className="form-control"{...content} />
+            <div className="text-help">
+              {content.touched ? content.error : ''}
+            </div>
           </div>
 
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     );
   }
+}
+
+/*return object from validate function, 
+if object has a key that matches one of our field names,
+and that key has a truthy object tied to it,
+reduxForm assumes that the form is not valid and
+therefore will not submit the form.*/
+/*Marking the form as invalid: 
+add properties value to errors object, that we return, and add
+a truthy value to it.*/
+function validate(values) {
+  const errors = {};
+
+  if (!values.title) {
+    errors.title = "Enter A Title";
+  } 
+  else if (!values.categories) {
+    errors.categories = "Enter Categories";
+  } 
+  else if (!values.content) {
+    errors.content = "Enter Some Content";
+  } else {
+    return "";
+  }
+
+  return errors;
 }
 
 /*by defining different fields, we got 3 properites injected 
@@ -51,7 +86,8 @@ into our props object. fields.title fields.categories, etc.*/
 //mapDispatchToProps
 export default reduxForm({ 
   form: 'PostsNewForm', 
-  fields: ['title', 'categories', 'content']
+  fields: ['title', 'categories', 'content'],
+  validate
 }, null, { createPost })(PostsNew);
 //whenever the user is making changes to the input, the changes are
 //affecting the state of the app as well.
