@@ -18,8 +18,6 @@ export function fetchPosts(){
 }
 
 //Take some props from the form and post them to this endpoint.
-/*When we post to the url, we need to send along the props as well
-that is why we pass in the second argument "props".*/
 export function createPost(props) {
   const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, props);
 

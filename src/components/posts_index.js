@@ -8,7 +8,6 @@ class PostsIndex extends Component {
     this.props.fetchPosts();
   }
 
-  //whenever we have a list in react, we need to add a key
   renderPosts() {
     return this.props.posts.map((post) => {
       return (
@@ -20,7 +19,6 @@ class PostsIndex extends Component {
         </li>
       )
     });
-
   }
 
   render() {
@@ -31,7 +29,7 @@ class PostsIndex extends Component {
           {this.renderPosts()}
         </ul>
         <div className="text-xs-right">
-          <Link to="/posts/new" className="btn btn-primary">
+          <Link to="/posts/new" className="btn btn-primary" id="new-post-btn">
             Add New Post
           </Link>
         </div>

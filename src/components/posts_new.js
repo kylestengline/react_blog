@@ -4,8 +4,6 @@ import { createPost } from '../actions/index';
 import { Link } from 'react-router';
 
 class PostsNew extends Component {
-  //defining object on PostsNew class.
-  //we could reference to PostsNew.contextTypes
   static contextTypes = {
     router: PropTypes.object
   };
@@ -13,19 +11,13 @@ class PostsNew extends Component {
   onSubmit(props) {
     this.props.createPost(props)
       .then(() => { 
-        /*blog post has been created, navigate the user to index.
-        we navigate by calling this.context.router.push with the new path
-        to navigate to.*/
         this.context.router.push('/');
       });
   }
 
   render() {
-    //es6 syntax
-    //configuration object for form.
     const { fields: { title, categories, content },  handleSubmit } = this.props;
 
-    //using reduxForm to manage each our 3 inputs.
     return (
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <h3>Create a New Post</h3>
@@ -61,14 +53,6 @@ class PostsNew extends Component {
   }
 }
 
-/*return object from validate function, 
-if object has a key that matches one of our field names,
-and that key has a truthy object tied to it,
-reduxForm assumes that the form is not valid and
-therefore will not submit the form.*/
-/*Marking the form as invalid: 
-add properties value to errors object, that we return, and add
-a truthy value to it.*/
 function validate(values) {
   const errors = {};
 
@@ -87,17 +71,8 @@ function validate(values) {
   return errors;
 }
 
-/*by defining different fields, we got 3 properites injected 
-into our props object. fields.title fields.categories, etc.*/
-//handling the state side of the app.
-
-//connect: first argument is mapStateToProps, 2nd is mapDispatchToProps
-//reduxForm: 1st is form config, 2nd is mapStateToProps, 3rd is
-//mapDispatchToProps
 export default reduxForm({ 
   form: 'PostsNewForm', 
   fields: ['title', 'categories', 'content'],
   validate
 }, null, { createPost })(PostsNew);
-//whenever the user is making changes to the input, the changes are
-//affecting the state of the app as well.

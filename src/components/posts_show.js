@@ -4,13 +4,12 @@ import { fetchPost, deletePost } from '../actions/index';
 import { Link } from 'react-router';
 
 class PostsShow extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }; 
   componentWillMount() {
     this.props.fetchPost(this.props.params.id); 
   }
-
-  static contextTypes = {
-    router: PropTypes.object
-  };
 
   onDeleteClick() {
     this.props.deletePost(this.props.params.id)
@@ -19,8 +18,7 @@ class PostsShow extends Component {
       });
   }
 
-  render() {
-    const { post } = this.props;
+  render() { const { post } = this.props;
 
     if (!post) {
       return <div>Loading...</div>;
@@ -41,7 +39,6 @@ class PostsShow extends Component {
         </button>
       </div>
     );
-  //when using a callback function, we need to bind it
   }
 }
 

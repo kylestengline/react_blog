@@ -5,3 +5,7 @@ form a {
 .pull-xs-left {
   margin-left: 10px;
 }
+
+#new-post-btn {
+  margin-top: 20px;
+}
