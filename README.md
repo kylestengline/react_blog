@@ -1,6 +1,8 @@
-# Learning React with Redux and implementing Create, Read and Delete actions
+# Blog App
 
-## Technologies used:
+## Implemented Create, Read and Delete actions using React and Redux
+
+### Technologies used:
   - React
   - Redux
   - ReduxForm: handles data input for a form.
