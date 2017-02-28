@@ -9,8 +9,7 @@ class PostsNew extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
-
-  onSubmit(props) {
+onSubmit(props) {
     this.props.createPost(props)
       .then(() => { 
         /*blog post has been created, navigate the user to index.
