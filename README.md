@@ -1,6 +1,6 @@
 # Blog App
 
-## Implemented Create, Read and Delete actions using React and Redux
+## Implemented Create, Read and Delete actions using React with Redux
 
 ### Technologies used:
   - React
